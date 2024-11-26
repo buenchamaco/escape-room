@@ -5,13 +5,13 @@ function App() {
   const ESCAPE_ROOM_URL = "https://www.thinglink.com/card/1917747089962435046"; // Replace with your actual URL
 
   const TONGUE_TWISTERS = [
-    { language: "en-US", text: "She sells seashells by the seashore" },
-    { language: "en-US", text: "Peter Piper picked a peck of pickled peppers" },
     { language: "es-ES", text: "Tres tristes tigres comen trigo en un trigal" },
     {
       language: "es-ES",
-      text: "El amor es una locura que solo el cura lo cura, pero el cura que lo cura comete una gran locura.",
+      text: "El perro de San Roque no tiene rabo porque Ramón Ramírez se lo ha robado.",
     },
+    { language: "en-US", text: "She sells seashells by the seashore" },
+    { language: "en-US", text: "Peter Piper picked a peck of pickled peppers" },
   ];
 
   const normalizeText = (text) =>
@@ -29,6 +29,7 @@ function App() {
     browserSupport: false,
   });
 
+  const [completedTwisters, setCompletedTwisters] = useState(new Set());
   const [recognition, setRecognition] = useState(null);
   const currentTwisterRef = useRef("");
 
@@ -71,6 +72,12 @@ function App() {
 
       if (isCorrect) {
         const nextIndex = state.currentIndex + 1;
+
+        setCompletedTwisters((prevSet) => {
+          const newSet = new Set(prevSet);
+          newSet.add(state.currentIndex); // Mark the current twister as completed
+          return newSet;
+        });
 
         if (nextIndex >= TONGUE_TWISTERS.length) {
           setState((prev) => ({
@@ -132,6 +139,15 @@ function App() {
   };
 
   const startListening = () => {
+    if (completedTwisters.has(state.currentIndex)) {
+      setState((prev) => ({
+        ...prev,
+        message:
+          "You have already completed this tongue twister! Move to the next one.",
+      }));
+      return;
+    }
+
     if (recognition && currentTwisterRef.current) {
       try {
         recognition.lang = TONGUE_TWISTERS[state.currentIndex].language;
@@ -208,16 +224,17 @@ function App() {
         </div>
 
         <div className="progress-container">
-          <div className="progress-bar">
-            <div
-              className="progress-fill"
+          {TONGUE_TWISTERS.map((_, index) => (
+            <span
+              key={index}
               style={{
-                width: `${
-                  (state.currentIndex / TONGUE_TWISTERS.length) * 100
-                }%`,
+                margin: "0 5px",
+                color: completedTwisters.has(index) ? "green" : "gray",
               }}
-            ></div>
-          </div>
+            >
+              {completedTwisters.has(index) ? "✔️" : "❌"}
+            </span>
+          ))}
           <div style={{ marginTop: "10px", color: "#bbbbbb" }}>
             Progress: {state.currentIndex}/{TONGUE_TWISTERS.length}
           </div>
