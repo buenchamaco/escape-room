@@ -1,0 +1,118 @@
+/* General App Styling */
+.app-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  text-align: center;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text for contrast */
+  min-height: 100vh;
+}
+
+.content-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #1e1e1e; /* Slightly lighter than background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Styling */
+.image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mask-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #333;
+}
+
+.image-caption {
+  margin-top: 10px;
+  font-style: italic;
+  color: #bbbbbb;
+}
+
+/* Button Styling */
+button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.start-button {
+  background-color: #2d89ef; /* Blue color */
+  color: #ffffff;
+}
+
+.start-button:hover {
+  background-color: #1e70bf;
+}
+
+.speak-button {
+  background-color: #e74856; /* Red color */
+  color: #ffffff;
+}
+
+.speak-button:hover {
+  background-color: #bf3c46;
+}
+
+button:disabled {
+  background-color: #555555;
+  cursor: not-allowed;
+}
+
+/* Message Box Styling */
+.message-box {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  color: #dddddd;
+}
+
+/* Footer Styling */
+.footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #888888;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background-color: #333333;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 20px;
+  width: 100%;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #2d89ef;
+  transition: width 0.3s ease;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  .content-box {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
