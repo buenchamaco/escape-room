@@ -4,15 +4,16 @@ import "./App.css";
 function App() {
   const ESCAPE_ROOM_URL = "https://www.thinglink.com/card/1917747089962435046"; // Replace with your actual URL
 
-  const TONGUE_TWISTERS = [
-    { language: "en-US", text: "She sells seashells by the seashore" },
-    { language: "en-US", text: "Peter Piper picked a peck of pickled peppers" },
-    { language: "es-ES", text: "Tres tristes tigres comen trigo en un trigal" },
-    {
-      language: "es-ES",
-      text: "El amor es una locura que solo el cura lo cura",
-    },
-  ];
+ const TONGUE_TWISTERS = {
+  "es-ES": [
+    "Pablito clavó un clavito",
+    "Tres tristes tigres comían trigo en un trigal",
+  ],
+  "en-US": [
+    "She sells seashells by the seashore",
+    "Peter Piper picked a peck of pickled peppers",
+  ],
+};
 
   const normalizeText = (text) =>
     text
