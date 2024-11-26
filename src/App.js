@@ -10,7 +10,7 @@ function App() {
     { language: "es-ES", text: "Tres tristes tigres comen trigo en un trigal" },
     {
       language: "es-ES",
-      text: "El amor es una locura que solo el cura lo cura, pero el cura que lo cura comete una gran locura.",
+      text: "El amor es una locura que solo el cura lo cura",
     },
   ];
 
