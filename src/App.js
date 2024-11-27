@@ -68,7 +68,7 @@ function App() {
       const normalizedTranscript = normalizeText(transcript);
 
       const isCorrect =
-        normalizedTranscript === normalizedExpected && confidence >= 0.7;
+        normalizedTranscript === normalizedExpected && confidence >= 0.8;
 
       if (isCorrect) {
         const nextIndex = state.currentIndex + 1;
